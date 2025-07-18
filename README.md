@@ -47,20 +47,22 @@ This system predicts inventory demand for retail stores using AI, optimizes deli
 
 
 ## 📂 Project Structure
+
 ai-stock-predictor/
-├── rust-gateway/             # Rust-based WebSocket + auth gateway
-├── frontend/                 # React frontend
+├── rust-gateway/          # Rust-based WebSocket + auth gateway
+├── frontend/              # React frontend
 │   └── src/
 │       ├── App.js
 │       ├── Dashboard.js
 │       ├── Forecast.js
 │       └── MapRoute.js
-├── src/                      # FastAPI backend
+├── src/                   # FastAPI backend
 │   ├── serve_api.py
 │   └── generate_sample_data.py
-├── data/                     # Input CSVs (inventory, locations)
-├── outputs/                  # AI-generated forecasts
+├── data/                  # Input CSVs (inventory, locations)
+├── outputs/               # AI-generated forecasts
 └── README.md
+
 
 ## 🔌 Backend (FastAPI)
 📁 Located in /src
