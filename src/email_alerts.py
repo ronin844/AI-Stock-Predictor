@@ -3,7 +3,7 @@ import yagmail
 import os
 
 SENDER = "prasunkushwaha02@gmail.com"
-RECIPIENTS = ["prasunkushwaha03@gmail.com","harsh.rnhs8055@gmail.com","prachikushwaha26@gmail.com"]  # or a list of emails
+RECIPIENTS = ["prasunkushwaha03@gmail.com","harsh.rnhs8055@gmail.com"]  # or a list of emails
 SUBJECT = "⚠️ Daily Inventory Shortage Alerts"
 
 def send_email():
@@ -27,7 +27,7 @@ def send_email():
     attachments=["outputs/alerts.csv"])
 
     yag.send(
-        to=[RECIPIENTS[0],RECIPIENTS[1],RECIPIENTS[2]],
+        to=[RECIPIENTS[0],RECIPIENTS[1]],
         subject=SUBJECT,
         contents=[
             "Dear Team,\n\nPlease find attached the latest inventory shortage alerts.\n",
