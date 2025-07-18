@@ -124,6 +124,6 @@ Then open the app at:
 🔗 http://localhost:3000
 
 ## 📷 Screenshots
-![Dashboard](./assets/.png)
-![Forecast](./assets/forecast_chart.png)
-![Routes](./assets/Screenshot_2025-07-18_151802.png)
+![Dashboard](./assets/dashboard.png)
+![Forecast](./assets/forecast.png)
+![Routes](./assets/routes.png)
