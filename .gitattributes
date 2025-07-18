@@ -1,34 +1,21 @@
-# Exclude build artifacts and data files
-*.pdb linguist-vendored
-*.rlib linguist-vendored
-*.rmeta linguist-vendored
-*.exe linguist-vendored
-*.dll linguist-vendored
-*.lib linguist-vendored
-*.a linguist-vendored
-*.o linguist-vendored
-*.pack linguist-vendored
-*.pkl linguist-vendored
-*.pyc linguist-vendored
-*.pyd linguist-vendored
-*.bin linguist-vendored
-*.npz linguist-vendored
+# Override language detection for misidentified files
+*.pdb linguist-detectable=false
+*.pkl linguist-detectable=false
+*.pack linguist-detectable=false
+*.rlib linguist-detectable=false
+*.rmeta linguist-detectable=false
 
-# Exclude large data/config files
-*.json linguist-vendored
-*.csv linguist-vendored
-*.map linguist-vendored
-RECORD linguist-vendored
+# If you have actual Makefiles that are being misdetected, specify them:
+# Makefile linguist-language=Makefile
+# *.mk linguist-language=Makefile
 
-# Mark documentation
-*.md linguist-documentation
-README linguist-documentation
-LICENSE linguist-vendored
+# Exclude build directories and artifacts from language stats
+target/ linguist-vendored=true
+.git/ linguist-vendored=true
+build/ linguist-vendored=true
+dist/ linguist-vendored=true
 
-# Ensure your actual source code is detected
-*.rs linguist-language=Rust
-*.py linguist-language=Python
-*.js linguist-language=JavaScript
-*.html linguist-language=HTML
-*.css linguist-language=CSS
-*.toml linguist-language=TOML
+# Mark documentation files to not affect language percentages
+*.md linguist-documentation=true
+*.txt linguist-documentation=true
+docs/ linguist-documentation=true
