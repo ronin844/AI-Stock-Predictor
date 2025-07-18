@@ -1,0 +1,15 @@
+product_id,from_store,to_store,quantity,road_km
+product_1,store_3,store_5,17,4.81
+product_1,store_2,store_4,52,12.85
+product_1,store_2,store_5,24,16.05
+product_1,store_1,store_5,22,17.67
+product_2,store_2,store_1,5,2.47
+product_2,store_5,store_3,12,4.75
+product_2,store_2,store_4,47,12.85
+product_3,store_1,store_2,34,2.47
+product_3,store_1,store_5,3,17.67
+product_4,store_5,store_3,14,4.75
+product_4,store_2,store_4,15,12.85
+product_4,store_2,store_3,17,17.12
+product_5,store_4,store_2,2,13.04
+product_6,store_3,store_5,23,4.81

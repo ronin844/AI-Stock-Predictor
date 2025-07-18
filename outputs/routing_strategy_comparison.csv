@@ -1,0 +1,6 @@
+to_store,num_origins,veh_A,veh_B,time_A_hr,time_B_hr,decision
+store_5,3,1,3,0.61,0.44,A (multi-pickup)
+store_4,1,1,2,0.32,0.32,A (multi-pickup)
+store_1,1,1,1,0.06,0.06,A (multi-pickup)
+store_3,2,1,2,0.52,0.43,A (multi-pickup)
+store_2,2,1,2,0.56,0.33,A (multi-pickup)
