@@ -109,3 +109,28 @@ jspm_packages/
 
 # FuseBox cache
 .fusebox/
+# Rust build artifacts
+target/
+*.pdb
+*.exe
+*.dll
+*.lib
+*.a
+*.o
+*.rlib
+*.rmeta
+
+# Python artifacts
+*.pyc
+*.pyd
+*.pkl
+__pycache__/
+
+# Large data files
+*.pack
+*.bin
+*.npz
+
+# Maps and logs
+*.map
+*.log
