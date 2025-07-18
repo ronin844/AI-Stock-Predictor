@@ -1,22 +1,28 @@
-# Mark data files as vendored (not code)
+# Mark ALL files as their correct language explicitly
+*.py linguist-language=Python
+*.js linguist-language=JavaScript
+*.rs linguist-language=Rust
+*.html linguist-language=HTML
+*.css linguist-language=CSS
+*.json linguist-language=JSON
+*.csv linguist-language=CSV
+*.md linguist-language=Markdown
+*.txt linguist-language=Text
+*.yml linguist-language=YAML
+*.yaml linguist-language=YAML
+
+# Mark non-code files as vendored
 *.csv linguist-vendored
 *.json linguist-vendored
-*.xml linguist-vendored
-*.txt linguist-vendored
 *.md linguist-documentation
-*.yml linguist-vendored
-*.yaml linguist-vendored
-*.toml linguist-vendored
-*.ini linguist-vendored
-*.cfg linguist-vendored
-*.conf linguist-vendored
+*.txt linguist-vendored
+*.log linguist-vendored
 *.lock linguist-vendored
 LICENSE linguist-vendored
 README linguist-documentation
 
-# Let GitHub detect code languages naturally
-*.py linguist-detectable
-*.js linguist-detectable
-*.rs linguist-detectable
-*.html linguist-detectable
-*.css linguist-detectable
+# Override any potential Makefile
+Makefile linguist-language=Makefile linguist-vendored
+makefile linguist-language=Makefile linguist-vendored
+*.mk linguist-language=Makefile linguist-vendored
+*.mak linguist-language=Makefile linguist-vendored
