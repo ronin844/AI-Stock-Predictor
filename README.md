@@ -126,4 +126,4 @@ Then open the app at:
 ## 📷 Screenshots
 ![Dashboard](./assets/.png)
 ![Forecast](./assets/forecast_chart.png)
-![Routes](./assets/routes_map.png)
+![Routes](./assets/Screenshot_2025-07-18_151802.png)
