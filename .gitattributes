@@ -1,21 +1,16 @@
-# Override language detection for misidentified files
+# Fix language detection - exclude build artifacts
 *.pdb linguist-detectable=false
 *.pkl linguist-detectable=false
 *.pack linguist-detectable=false
 *.rlib linguist-detectable=false
 *.rmeta linguist-detectable=false
+*.d linguist-detectable=false
 
-# If you have actual Makefiles that are being misdetected, specify them:
-# Makefile linguist-language=Makefile
-# *.mk linguist-language=Makefile
-
-# Exclude build directories and artifacts from language stats
+# Exclude build directories
 target/ linguist-vendored=true
 .git/ linguist-vendored=true
-build/ linguist-vendored=true
-dist/ linguist-vendored=true
 
-# Mark documentation files to not affect language percentages
+# Mark documentation
 *.md linguist-documentation=true
-*.txt linguist-documentation=true
+README* linguist-documentation=true
 docs/ linguist-documentation=true
