@@ -1,10 +1,6 @@
-frontend/** linguist-vendored
-venv/** linguist-vendored
-Makefile linguist-vendored
-generated-file.ext linguist-generated
-
-
-
-# Mark your main language files
-*.js linguist-language=JavaScript
-*.py linguist-language=Python
+# Exclude all Makefile-related content
+Makefile linguist-vendored=true
+makefile linguist-vendored=true
+*.mk linguist-vendored=true
+**/Makefile linguist-vendored=true
+**/makefile linguist-vendored=true
