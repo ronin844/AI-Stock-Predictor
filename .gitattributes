@@ -1,6 +1,11 @@
-# Exclude all Makefile-related content
-Makefile linguist-vendored=true
-makefile linguist-vendored=true
-*.mk linguist-vendored=true
-**/Makefile linguist-vendored=true
-**/makefile linguist-vendored=true
+# Completely exclude Makefile language detection
+*.* linguist-detectable=false
+*.js linguist-detectable=true linguist-language=JavaScript
+*.py linguist-detectable=true linguist-language=Python
+*.rs linguist-detectable=true linguist-language=Rust
+*.html linguist-detectable=true linguist-language=HTML
+*.css linguist-detectable=true linguist-language=CSS
+*.md linguist-detectable=true linguist-language=Markdown
+
+# Force exclude any Makefile detection
+* -linguist-detectable=makefile
