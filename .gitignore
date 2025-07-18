@@ -112,5 +112,6 @@ jspm_packages/
 
 # Ignore Makefile from language stats
 Makefile linguist-detectable=false
+makefile linguist-detectable=false
 *.mk linguist-detectable=false
 *.make linguist-detectable=false
