@@ -1,38 +1,22 @@
-# Exclude data files and non-code files from language detection
-*.csv linguist-vendored=true
-*.tsv linguist-vendored=true
-*.json linguist-vendored=true
-*.xml linguist-vendored=true
-*.txt linguist-vendored=true
-*.md linguist-documentation=true
-*.rst linguist-documentation=true
-README linguist-documentation=true
-LICENSE linguist-vendored=true
-*.lock linguist-vendored=true
+# Mark data files as vendored (not code)
+*.csv linguist-vendored
+*.json linguist-vendored
+*.xml linguist-vendored
+*.txt linguist-vendored
+*.md linguist-documentation
+*.yml linguist-vendored
+*.yaml linguist-vendored
+*.toml linguist-vendored
+*.ini linguist-vendored
+*.cfg linguist-vendored
+*.conf linguist-vendored
+*.lock linguist-vendored
+LICENSE linguist-vendored
+README linguist-documentation
 
-# Force exclude Makefile detection completely
-Makefile linguist-vendored=true
-makefile linguist-vendored=true
-*.mk linguist-vendored=true
-**/Makefile linguist-vendored=true
-**/makefile linguist-vendored=true
-
-# Ensure your actual code languages are properly detected
-*.py linguist-language=Python
-*.js linguist-language=JavaScript  
-*.rs linguist-language=Rust
-*.html linguist-language=HTML
-*.css linguist-language=CSS
-
-# Mark build/config files as vendored (exclude from stats)
-*.yml linguist-vendored=true
-*.yaml linguist-vendored=true
-*.toml linguist-vendored=true
-*.cfg linguist-vendored=true
-*.conf linguist-vendored=true
-*.ini linguist-vendored=true
-Dockerfile linguist-vendored=true
-docker-compose.yml linguist-vendored=true
-package.json linguist-vendored=true
-requirements.txt linguist-vendored=true
-*.log linguist-vendored=true
+# Let GitHub detect code languages naturally
+*.py linguist-detectable
+*.js linguist-detectable
+*.rs linguist-detectable
+*.html linguist-detectable
+*.css linguist-detectable
