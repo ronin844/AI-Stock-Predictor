@@ -1,3 +1,4 @@
 frontend/** linguist-vendored
 venv/** linguist-vendored
 Makefile linguist-vendored
+generated-file.ext linguist-generated
