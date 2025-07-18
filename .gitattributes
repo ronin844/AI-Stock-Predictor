@@ -1,33 +1,38 @@
-# Completely disable Makefile language detection
-*.* -linguist-detectable=makefile
-* -linguist-detectable=makefile
-
-# Enable detection only for your actual languages
-*.js linguist-detectable=true linguist-language=JavaScript
-*.py linguist-detectable=true linguist-language=Python
-*.rs linguist-detectable=true linguist-language=Rust
-*.html linguist-detectable=true linguist-language=HTML
-*.css linguist-detectable=true linguist-language=CSS
-*.json linguist-detectable=true linguist-language=JSON
-
-# Mark documentation files (won't count in language stats)
+# Exclude data files and non-code files from language detection
+*.csv linguist-vendored=true
+*.tsv linguist-vendored=true
+*.json linguist-vendored=true
+*.xml linguist-vendored=true
+*.txt linguist-vendored=true
 *.md linguist-documentation=true
-*.txt linguist-documentation=true
+*.rst linguist-documentation=true
 README linguist-documentation=true
-LICENSE linguist-documentation=true
-
-# Common files that get misidentified - force their language
-Dockerfile linguist-language=Dockerfile
-docker-compose.yml linguist-language=YAML
-*.yml linguist-language=YAML
-*.yaml linguist-language=YAML
-*.toml linguist-language=TOML
-*.cfg linguist-language=INI
-*.conf linguist-language=INI
-*.ini linguist-language=INI
-package.json linguist-language=JSON
+LICENSE linguist-vendored=true
 *.lock linguist-vendored=true
 
-# Nuclear option: exclude files without extensions
-* linguist-vendored=true
-*.* linguist-vendored=false
+# Force exclude Makefile detection completely
+Makefile linguist-vendored=true
+makefile linguist-vendored=true
+*.mk linguist-vendored=true
+**/Makefile linguist-vendored=true
+**/makefile linguist-vendored=true
+
+# Ensure your actual code languages are properly detected
+*.py linguist-language=Python
+*.js linguist-language=JavaScript  
+*.rs linguist-language=Rust
+*.html linguist-language=HTML
+*.css linguist-language=CSS
+
+# Mark build/config files as vendored (exclude from stats)
+*.yml linguist-vendored=true
+*.yaml linguist-vendored=true
+*.toml linguist-vendored=true
+*.cfg linguist-vendored=true
+*.conf linguist-vendored=true
+*.ini linguist-vendored=true
+Dockerfile linguist-vendored=true
+docker-compose.yml linguist-vendored=true
+package.json linguist-vendored=true
+requirements.txt linguist-vendored=true
+*.log linguist-vendored=true
