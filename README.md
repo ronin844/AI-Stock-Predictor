@@ -1,124 +1,127 @@
-# AI Stock Predictor
+# 🧠 AI Stock Predictor & Retail Edge Platform
 
-This project is a full-stack AI-powered stock prediction and route optimization system designed for retail stores. It combines a Python FastAPI backend with a React frontend to provide real-time stock forecasts and optimized delivery routes.
+A full-stack AI platform for inventory forecasting, route optimization, and secure retail data exchange — powered by **FastAPI**, **Rust**, and **React**.
 
-## Technologies Used
+---
 
-- **Backend:** FastAPI, Python, Pandas, Uvicorn
-- **Frontend:** React.js, React Router, Chart.js, Mapbox, Folium
-- **Data:** CSV files for input data and prediction outputs
-- **Visualization:** Interactive charts and maps for forecasts and routes
+## 📌 Overview
 
-## Project Structure
+This system predicts inventory demand for retail stores using AI, optimizes delivery routes, and facilitates secure, real-time communication between edge store devices and a central backend.
 
+### Key Features:
+
+- 🔮 AI-powered demand forecasts (7-day prediction window)
+- 🚚 Smart delivery route optimization (single vs multi-truck logic)
+- 📈 Interactive dashboard for stock, trends, and forecasts
+- 🔐 Rust WebSocket Gateway with JWT authentication
+- 📡 Real-time store updates with WebSockets
+
+---
+
+## 🧱 System Architecture
+
+```txt
+[ Retail Store Devices ]
+        │
+        ▼
+[ Rust Gateway ] ← WebSocket + JWT Auth
+        │
+        ▼
+[ FastAPI Backend ] ← Forecasting + Routing + APIs
+        │
+        ▼
+[ React Frontend ] ← Dashboards + Charts + Maps
 ```
+
+## 💻 Technologies Used
+
+| Layer         |             Stack & Tools                    |
+|---------------|----------------------------------------------|
+| Frontend      | React.js, Chart.js, Mapbox, Folium           |
+| Backend       | FastAPI, Python, Pandas                      |
+| Edge Gateway  | Rust, Axum, Tokio, Serde, JWT, WebSocket     |
+| Visualization | Mapbox, Folium, Chart.js                     |
+| Data Handling | CSV-based data for predictions and locations |
+
+
+
+## 📂 Project Structure
 ai-stock-predictor/
-├── frontend/           # React frontend application
-│   ├── src/
-│   │   ├── App.js     # Main app with routing and navigation
-│   │   ├── Dashboard.js
-│   │   ├── Forecast.js
-│   │   └── MapRoute.js
-│   └── package.json
-├── src/               # Python backend API server
-│   ├── serve_api.py   # FastAPI server exposing prediction and route endpoints
-│   └── generate_sample_~data.py  # Script to generate sample CSV data
-├── data/              # Input CSV data files
-│   ├── store_locations.csv
-│   └── inventory.csv
-└── outputs/           # Generated prediction CSV files
-    ├── predictions.csv
-    └── forecast_daily.csv
-```
+├── rust-gateway/             # Rust-based WebSocket + auth gateway
+├── frontend/                 # React frontend
+│   └── src/
+│       ├── App.js
+│       ├── Dashboard.js
+│       ├── Forecast.js
+│       └── MapRoute.js
+├── src/                      # FastAPI backend
+│   ├── serve_api.py
+│   └── generate_sample_data.py
+├── data/                     # Input CSVs (inventory, locations)
+├── outputs/                  # AI-generated forecasts
+└── README.md
 
-## How It Works
+## 🔌 Backend (FastAPI)
+📁 Located in /src
 
-### Backend
+The FastAPI backend reads inventory/location data from data/, performs AI-based predictions, and writes results to outputs/.
 
-- The backend is implemented using FastAPI and serves as the core engine for stock forecasting and route data.
-- It reads input data from CSV files in the `data/` directory and prediction outputs from the `outputs/` directory.
-- The backend exposes several REST API endpoints:
-  - `POST /predict`: Accepts a JSON payload with `store_id` and `product_id` and returns:
-    - Current stock level for the product at the store
-    - Predicted demand for the next 7 days
-    - Stock status (surplus, shortage, or balanced)
-    - Daily forecast data for visualization
-  - `GET /dashboard`: Returns aggregated dashboard metrics such as total stores, total products, low stock alerts, and recent predictions.
-  - `GET /stores` and `GET /products`: Provide lists of available stores and products for frontend dropdowns.
-  - `GET /route-data` and `GET /route-data/{destination}`: Provide routing and transfer data for route visualization.
-- The backend uses pandas for data processing and includes CORS middleware to allow requests from the frontend.
+API Endpoints:
+- POST /predict: Predicts 7-day product demand for a store
 
-### Frontend
+- GET /dashboard: Returns store/product stats + alerts
 
-- The frontend is a React application with routing and navigation using React Router.
-- It provides three main pages:
-  - **Dashboard:** Displays summary metrics and recent alerts.
-  - **Forecast:** Allows users to select a store and product, fetches forecast data from the backend, and displays it with charts.
-  - **Routes:** Visualizes optimized delivery routes on an interactive map using Mapbox and Folium.
-- The Forecast page dynamically fetches available stores and products to populate dropdowns.
-- On user input, it calls the backend `/predict` API and displays the results including current stock, predicted demand, and a line chart of daily forecasted sales.
+- GET /route-data/{destination}: Returns optimized truck routes
 
-### Route Optimization Logic
+- GET /stores and GET /products: Lists for dropdowns
 
-- The system uses a 2-hour grace period to decide between two routing modes:
-  - **Multi-pickup Mode:** A single truck visits multiple stores in a farthest-first order.
-  - **Parallel Mode:** Multiple trucks make direct trips from origins to the destination.
-- This decision is based on the time difference between routes, optimizing for delivery efficiency and resource utilization.
+Routing Modes:
+- Multi-pickup: One truck visits multiple stores (farthest-first)
 
-### Implementation Details
+- Parallel: Multiple trucks dispatched to one destination
 
-- **Backend:**
-  - Uses FastAPI to create RESTful endpoints.
-  - Reads and processes CSV data with pandas.
-  - Implements CORS middleware to allow frontend communication.
-  - Runs on port 8000 by default.
-- **Frontend:**
-  - Built with React and React Router for SPA navigation.
-  - Uses Chart.js for rendering forecast line charts.
-  - Uses Mapbox and Folium for interactive route maps.
-  - Runs on port 3000 by default.
-- **Data Flow:**
-  - Frontend fetches data from backend APIs.
-  - User inputs on the frontend trigger API calls to fetch predictions.
-  - Backend returns processed data for display and visualization.
+- ✅ Selection logic based on 2-hour time difference between modes
 
-## Installation
+## 🔐 Rust Edge Gateway
+📁 Located in /rust-gateway
 
-1. **Backend Setup**
-```bash
-pip install fastapi uvicorn pandas pyngrok
-cd src
-python serve_api.py
-```
+The Rust-based gateway acts as a secure communication bridge between edge retail devices and the backend.
 
-2. **Frontend Setup**
-```bash
-cd frontend
-npm install
-npm start
-```
+Responsibilities:
+- WebSocket connections from in-store devices
 
-3. Open `http://localhost:3000` in your browser to access the app.
+- JWT-based client authentication
 
-## Usage
+- Forwarding inventory data to FastAPI backend
 
-- Navigate between Dashboard, Forecast, and Routes pages.
-- Use the Forecast page to get stock predictions by selecting store and product.
-- Use the Routes page to view optimized delivery routes and statistics.
+- Useful for real-time sync between edge and cloud
+  
+## 🌐 Frontend (React)
+📁 Located in /frontend
 
-## API Endpoints
+The React-based frontend provides an interactive dashboard to explore AI predictions, inventory trends, and delivery routes.
 
-- `GET /dashboard` - Dashboard metrics and recent predictions
-- `GET /stores` - List of available stores
-- `GET /products` - List of available products
-- `POST /predict` - Get stock prediction for store/product
-- `GET /route-data` - Get all route optimization data
-- `GET /route-data/{destination}` - Get specific destination route data
+Pages:
+- Dashboard: Summary tiles + alerts
 
-## Contributing
+- Forecast: Pick store/product → get 7-day trend chart
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a new Pull Request
+- Routes: Interactive delivery map using Mapbox/Folium
+## 🧪 Local Setup
+1. Backend (FastAPI)
+  cd src
+  pip install fastapi uvicorn pandas pyngrok
+  uvicorn serve_api:app --reload
+2. Frontend (React)
+  cd frontend
+  npm install
+  npm start
+3. Rust Gateway
+  cd rust-gateway
+  cargo build
+  cargo run
+Then open the app at:
+🔗 http://localhost:3000
+![Dashboard](./assets/dashboard.png)
+![Forecast](./assets/forecast_chart.png)
+![Routes](./assets/routes_map.png)
