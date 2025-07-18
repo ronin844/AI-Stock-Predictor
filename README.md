@@ -21,6 +21,7 @@ This system predicts inventory demand for retail stores using AI, optimizes deli
 ## 🧱 System Architecture
 
 ```txt
+
 [ Retail Store Devices ]
         │
         ▼
