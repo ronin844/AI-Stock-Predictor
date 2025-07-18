@@ -109,8 +109,3 @@ jspm_packages/
 
 # FuseBox cache
 .fusebox/
-
-# Ignore Makefile from language stats
-Makefile linguist-detectable=false
-*.mk linguist-detectable=false
-*.make linguist-detectable=false
