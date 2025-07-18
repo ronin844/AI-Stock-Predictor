@@ -1,17 +1,11 @@
-# Mark ALL files as their correct language explicitly
-*.py linguist-language=Python
-*.js linguist-language=JavaScript
+# Rust-specific files
+Cargo.toml linguist-language=TOML
+Cargo.lock linguist-vendored
+*.toml linguist-language=TOML
+build.rs linguist-language=Rust
 *.rs linguist-language=Rust
-*.html linguist-language=HTML
-*.css linguist-language=CSS
-*.json linguist-language=JSON
-*.csv linguist-language=CSV
-*.md linguist-language=Markdown
-*.txt linguist-language=Text
-*.yml linguist-language=YAML
-*.yaml linguist-language=YAML
 
-# Mark non-code files as vendored
+# Mark non-code files as vendored (exclude from language stats)
 *.csv linguist-vendored
 *.json linguist-vendored
 *.md linguist-documentation
@@ -21,8 +15,14 @@
 LICENSE linguist-vendored
 README linguist-documentation
 
-# Override any potential Makefile
-Makefile linguist-language=Makefile linguist-vendored
-makefile linguist-language=Makefile linguist-vendored
-*.mk linguist-language=Makefile linguist-vendored
-*.mak linguist-language=Makefile linguist-vendored
+# Common files that get misidentified
+*.yml linguist-language=YAML
+*.yaml linguist-language=YAML
+*.cfg linguist-language=INI
+*.conf linguist-language=INI
+*.ini linguist-language=INI
+
+# Force exclude any actual Makefiles if they exist
+Makefile linguist-vendored
+makefile linguist-vendored
+*.mk linguist-vendored
