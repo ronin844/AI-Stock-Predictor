@@ -109,8 +109,10 @@ jspm_packages/
 
 # FuseBox cache
 .fusebox/
+
 # Rust build artifacts
 target/
+**/*.rs.bk
 *.pdb
 *.exe
 *.dll
@@ -119,6 +121,7 @@ target/
 *.o
 *.rlib
 *.rmeta
+*.d
 
 # Python artifacts
 *.pyc
@@ -126,11 +129,30 @@ target/
 *.pkl
 __pycache__/
 
-# Large data files
+# Git internals (should never be tracked)
+.git/objects/
 *.pack
+*.idx
+
+# Large data files
 *.bin
 *.npz
 
 # Maps and logs
 *.map
 *.log
+
+# Machine learning models
+*.model
+*.h5
+*.joblib
+*.sav
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
