@@ -1,11 +1,33 @@
-# Completely exclude Makefile language detection
-*.* linguist-detectable=false
+# Completely disable Makefile language detection
+*.* -linguist-detectable=makefile
+* -linguist-detectable=makefile
+
+# Enable detection only for your actual languages
 *.js linguist-detectable=true linguist-language=JavaScript
 *.py linguist-detectable=true linguist-language=Python
 *.rs linguist-detectable=true linguist-language=Rust
 *.html linguist-detectable=true linguist-language=HTML
 *.css linguist-detectable=true linguist-language=CSS
-*.md linguist-detectable=true linguist-language=Markdown
+*.json linguist-detectable=true linguist-language=JSON
 
-# Force exclude any Makefile detection
-* -linguist-detectable=makefile
+# Mark documentation files (won't count in language stats)
+*.md linguist-documentation=true
+*.txt linguist-documentation=true
+README linguist-documentation=true
+LICENSE linguist-documentation=true
+
+# Common files that get misidentified - force their language
+Dockerfile linguist-language=Dockerfile
+docker-compose.yml linguist-language=YAML
+*.yml linguist-language=YAML
+*.yaml linguist-language=YAML
+*.toml linguist-language=TOML
+*.cfg linguist-language=INI
+*.conf linguist-language=INI
+*.ini linguist-language=INI
+package.json linguist-language=JSON
+*.lock linguist-vendored=true
+
+# Nuclear option: exclude files without extensions
+* linguist-vendored=true
+*.* linguist-vendored=false
