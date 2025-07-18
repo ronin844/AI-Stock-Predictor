@@ -1,0 +1,16 @@
+[package]
+name = "edge-retailgateway"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+actix = "0.13"
+actix-web = "4"
+actix-web-actors = "4.3" # WebSocket support
+actix-cors = "0.7"
+chrono = { version = "0.4", features = ["serde"] }
+jsonwebtoken = "9"
+reqwest = { version = "0.11", features = ["json"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+rand = "0.8" # For generating unique session IDs
