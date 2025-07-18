@@ -122,6 +122,8 @@ Pages:
   cargo run
 Then open the app at:
 🔗 http://localhost:3000
-![Dashboard](./assets/dashboard.png)
+
+## 📷 Screenshots
+![Dashboard](./assets/.png)
 ![Forecast](./assets/forecast_chart.png)
 ![Routes](./assets/routes_map.png)
