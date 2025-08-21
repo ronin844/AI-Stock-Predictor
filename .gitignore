@@ -115,3 +115,50 @@ Makefile linguist-detectable=false
 makefile linguist-detectable=false
 *.mk linguist-detectable=false
 *.make linguist-detectable=false
+
+# Rust build artifacts
+target/
+**/*.rs.bk
+*.pdb
+*.exe
+*.dll
+*.lib
+*.a
+*.o
+*.rlib
+*.rmeta
+*.d
+
+# Python artifacts
+*.pyc
+*.pyd
+*.pkl
+__pycache__/
+
+# Git internals (should never be tracked)
+.git/objects/
+*.pack
+*.idx
+
+# Large data files
+*.bin
+*.npz
+
+# Maps and logs
+*.map
+*.log
+
+# Machine learning models
+*.model
+*.h5
+*.joblib
+*.sav
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup

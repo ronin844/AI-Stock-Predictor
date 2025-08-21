@@ -1,2 +1,19 @@
 node_modules/** linguist-vendored
 venv/** linguist-vendored
+
+# Fix language detection - exclude build artifacts
+*.pdb linguist-detectable=false
+*.pkl linguist-detectable=false
+*.pack linguist-detectable=false
+*.rlib linguist-detectable=false
+*.rmeta linguist-detectable=false
+*.d linguist-detectable=false
+
+# Exclude build directories
+target/ linguist-vendored=true
+.git/ linguist-vendored=true
+
+# Mark documentation
+*.md linguist-documentation=true
+README* linguist-documentation=true
+docs/ linguist-documentation=true
