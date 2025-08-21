@@ -31,7 +31,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/dashboard');
+        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000'}/dashboard`);
         if (!response.ok) {
           throw new Error('Failed to fetch dashboard data');
         }

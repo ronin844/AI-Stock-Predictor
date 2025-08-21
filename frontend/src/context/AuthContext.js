@@ -5,7 +5,7 @@ import jwtDecode from 'jwt-decode';
 const AuthContext = createContext();
 
 // Set the base URL for all axios requests
-axios.defaults.baseURL = 'http://localhost:8088';
+axios.defaults.baseURL = process.env.REACT_APP_AUTH_API_URL || 'http://localhost:8088';
 
 // Function to set the JWT token for subsequent requests
 export const setAuthToken = (token) => {
@@ -20,7 +20,7 @@ export const setAuthToken = (token) => {
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [token, setToken] = useState(localStorage.getItem('token'));
+  const [token, setToken] = useState(localStorage.getItem(process.env.REACT_APP_TOKEN_STORAGE_KEY || 'token'));
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -33,13 +33,13 @@ export const AuthProvider = ({ children }) => {
           setAuthToken(token);
         } else {
           // Token is expired
-          localStorage.removeItem('token');
+          localStorage.removeItem(process.env.REACT_APP_TOKEN_STORAGE_KEY || 'token');
           setToken(null);
           setAuthToken(null);
         }
       } catch (error) {
         console.error("Invalid token:", error);
-        localStorage.removeItem('token');
+        localStorage.removeItem(process.env.REACT_APP_TOKEN_STORAGE_KEY || 'token');
         setToken(null);
         setAuthToken(null);
       }
@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }) => {
       console.log('Login response:', response);
       
       const { token } = response.data;
-      localStorage.setItem('token', token);
+      localStorage.setItem(process.env.REACT_APP_TOKEN_STORAGE_KEY || 'token', token);
       setToken(token);
       const decoded = jwtDecode(token);
       setUser({ username: decoded.sub, role: decoded.role });
@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem(process.env.REACT_APP_TOKEN_STORAGE_KEY || 'token');
     setToken(null);
     setUser(null);
     setAuthToken(null);

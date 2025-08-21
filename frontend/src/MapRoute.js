@@ -29,9 +29,9 @@ import {
 } from '@mui/icons-material';
 
 // Set Mapbox access token
-mapboxgl.accessToken = 'pk.eyJ1Ijoicm9uaW4wODA0IiwiYSI6ImNtYzNldnVyNTAwMjQybHNhODJ4dTFtMzgifQ.gICZEncdQpQ2bp9QQ67t7A';
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN || 'pk.eyJ1Ijoicm9uaW4wODA0IiwiYSI6ImNtYzNldnVyNTAwMjQybHNhODJ4dTFtMzgifQ.gICZEncdQpQ2bp9QQ67t7A';
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
 
 function MapRoute() {
   const mapContainer = useRef(null);
